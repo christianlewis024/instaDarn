@@ -10,3 +10,10 @@
   border-bottom: 1px solid lightgray;
   object-fit: contain;
 }
+center {
+  display: flex;
+  flex-direction: column;
+}
+center .app_headerImage {
+  object-fit: contain;
+}
