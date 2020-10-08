@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+}
+.app {
+  background-color: #f1f1f1;
+}
+.app_header {
+  background-color: white;
+  padding: 20px;
+  border-bottom: 1px solid lightgray;
+  object-fit: contain;
+}
+center {
+  display: flex;
+  flex-direction: column;
+}
+center .app_headerImage {
+  object-fit: contain;
+}
