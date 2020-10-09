@@ -1,30 +1,80 @@
 * {
   margin: 0;
 }
+
 .app {
-  background-color: #f1f1f1;
+  background-color: #fafafa;
+  padding-bottom: 100px;
 }
+
+.app_login {
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  justify-content: center;
+  padding: 20px;
+  background-color: white;
+  border: 1px solid lightgray;
+}
+
+.app_loginHome {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
+  background-color: white;
+  border: 1px solid lightgray;
+}
+
+.app_upload {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  border-top: 1px solid lightgray;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.app_headerImage {
+  object-fit: contain;
+}
+
+.app_headerRight {
+  display: flex;
+  align-items: center;
+}
+
+.app_headerRight > p {
+  margin-right: 5px;
+}
+
+.app_headerAvatar {
+  height: 30px !important;
+  width: 30px !important;
+}
+
+.app_header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+  padding: 20px;
+  background-color: #ffffff;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 10px;
+}
+
 .app_posts {
   display: flex;
   justify-content: space-evenly;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   padding: 10px 30px;
 }
+
 .app_postsRight {
   margin-left: 10px;
-}
-.app_header {
-  background-color: white;
-  padding: 20px;
-  border-bottom: 1px solid lightgray;
-  object-fit: contain;
-  display: flex;
-  justify-content: space-between;
-}
-center {
-  display: flex;
-  flex-direction: column;
-}
-center .app_headerImage {
-  object-fit: contain;
 }
