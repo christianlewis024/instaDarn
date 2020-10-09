@@ -128,7 +128,7 @@ function App() {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <Button type="submit" onClick={signUp}>
-                SignUp
+                Sign Up
               </Button>
             </center>
           </form>
