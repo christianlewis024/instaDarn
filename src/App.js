@@ -177,7 +177,11 @@ function App() {
           </div>
         )}
       </div>
-
+      {user?.displayName ? (
+        <ImageUpload username={user.displayName} />
+      ) : (
+        <h3>Please log in to upload images</h3>
+      )}
       <div className="app_posts">
         <div className="app_postsLeft">
           {posts.map(({ id, post }) => (
@@ -191,27 +195,7 @@ function App() {
             />
           ))}
         </div>
-        <div className="app_postsRight">
-          <InstagramEmbed
-            url="https://www.instagram.com/p/B_uf9dmAGPw/"
-            maxWidth={320}
-            hideCaption={false}
-            containerTagName="div"
-            protocol=""
-            injectScript
-            onLoading={() => {}}
-            onSuccess={() => {}}
-            onAfterRender={() => {}}
-            onFailure={() => {}}
-          />
-        </div>
       </div>
-
-      {user?.displayName ? (
-        <ImageUpload username={user.displayName} />
-      ) : (
-        <h3>Please log in to upload images</h3>
-      )}
     </div>
   );
 }

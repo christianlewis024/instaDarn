@@ -4,12 +4,14 @@
   width: 60%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  background-color: white;
-  border-top: 1px solid lightgray;
+  background-color: rgb(236, 236, 236);
 }
 
-.imageupload_progress {
+.imageupload__progress {
   width: 100%;
+}
+
+.imageupload__button {
+  margin: 10px;
+  height: 30px;
 }

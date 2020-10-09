@@ -66,7 +66,11 @@ const ImageUpload = ({ username }) => {
       />
       <div>
         <input type="file" onChange={handleChange} />
-        <Button className="imageupload_button" onClick={handleUpload}>
+        <Button
+          className="imageupload_button"
+          onClick={handleUpload}
+          backgroundColor="red"
+        >
           Upload
         </Button>
       </div>
