@@ -5,6 +5,7 @@ import { db, auth } from "./firebase";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import { Button, Input } from "@material-ui/core";
+import ImageUpload from "./ImageUpload";
 
 function getModalStyle() {
   const top = 50;
@@ -65,14 +66,16 @@ function App() {
   // useEffect runs a piece of code based on a specific condition
   useEffect(() => {
     // code runs here
-    db.collection("posts").onSnapshot((snapshot) => {
-      setPosts(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          post: doc.data(),
-        }))
-      );
-    });
+    db.collection("posts")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        setPosts(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            post: doc.data(),
+          }))
+        );
+      });
     // onSnapshot is a powerful listener. Every single time the database changes, added, modified, its like a camera and takes a snapshot of exactly what the database looks like, when someone adds to DB its going to update instantly
   }, []);
   const signUp = (event) => {
@@ -97,6 +100,11 @@ function App() {
   };
   return (
     <div className="app">
+      {user?.displayName ? (
+        <ImageUpload username={user.displayName} />
+      ) : (
+        <h3>Please log in to upload images</h3>
+      )}
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
           <form className="app_signup">
@@ -174,7 +182,6 @@ function App() {
           <Button onClick={() => setOpen(true)}>Sign Up</Button>
         </div>
       )}
-
       <h1>Hi friends. </h1>
       {/* header */}
       {posts.map(({ id, post }) => (
