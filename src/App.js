@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import { Button, Input } from "@material-ui/core";
 import ImageUpload from "./ImageUpload";
-
+import InstagramEmbed from "react-instagram-embed";
 function getModalStyle() {
   const top = 50;
   const left = 50;
@@ -100,11 +100,6 @@ function App() {
   };
   return (
     <div className="app">
-      {user?.displayName ? (
-        <ImageUpload username={user.displayName} />
-      ) : (
-        <h3>Please log in to upload images</h3>
-      )}
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
           <form className="app_signup">
@@ -173,25 +168,50 @@ function App() {
           src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
           alt="instagram logo"
         ></img>
+        {user ? (
+          <Button onClick={() => auth.signOut()}>Log Out</Button>
+        ) : (
+          <div className="app_loginContainer">
+            <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
+            <Button onClick={() => setOpen(true)}>Sign Up</Button>
+          </div>
+        )}
       </div>
-      {user ? (
-        <Button onClick={() => auth.signOut()}>Log Out</Button>
-      ) : (
-        <div className="app_loginContainer">
-          <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
-          <Button onClick={() => setOpen(true)}>Sign Up</Button>
+
+      <div className="app_posts">
+        <div className="app_postsLeft">
+          {posts.map(({ id, post }) => (
+            <Post
+              user={user}
+              key={id}
+              postId={id}
+              username={post.username}
+              caption={post.caption}
+              imageUrl={post.imageUrl}
+            />
+          ))}
         </div>
+        <div className="app_postsRight">
+          <InstagramEmbed
+            url="https://www.instagram.com/p/B_uf9dmAGPw/"
+            maxWidth={320}
+            hideCaption={false}
+            containerTagName="div"
+            protocol=""
+            injectScript
+            onLoading={() => {}}
+            onSuccess={() => {}}
+            onAfterRender={() => {}}
+            onFailure={() => {}}
+          />
+        </div>
+      </div>
+
+      {user?.displayName ? (
+        <ImageUpload username={user.displayName} />
+      ) : (
+        <h3>Please log in to upload images</h3>
       )}
-      <h1>Hi friends. </h1>
-      {/* header */}
-      {posts.map(({ id, post }) => (
-        <Post
-          key={id}
-          username={post.username}
-          caption={post.caption}
-          imageUrl={post.imageUrl}
-        />
-      ))}
     </div>
   );
 }
